@@ -1,22 +1,28 @@
+'use client';
+
 import { useForm, SubmitHandler } from 'react-hook-form';
-
-
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import emailjs from 'emailjs-com';
 
-type FormData = {
-    name: string;
-    phone: string;
-    email: string;
-    repairType: string;
-    location: string;
-    date: string;
-    time: string;
-};
+const bookingFormSchema = z.object({
+    name: z.string().nonempty('Nome é obrigatório.'),
+    phone: z.string().nonempty('Telefone é obrigatório.'),
+    email: z.string().email('Email inválido.').nonempty('Email é obrigatório.'),
+    repairType: z.string().nonempty('Tipo de reparo é obrigatório.'),
+    location: z.string().nonempty('Localização é obrigatória.'),
+    date: z.string().nonempty('Data é obrigatória.'),
+    time: z.string().nonempty('Horário é obrigatório.'),
+});
+
+type BookingFormData = z.infer<typeof bookingFormSchema>;
 
 export default function BookingForm() {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const { register, handleSubmit, formState: { errors } } = useForm<BookingFormData>({
+        resolver: zodResolver(bookingFormSchema),
+    });
 
-    const onSubmit: SubmitHandler<FormData> = (data) => {
+    const onSubmit: SubmitHandler<BookingFormData> = (data) => {
         const templateParams = {
             name: data.name,
             phone: data.phone,
@@ -46,7 +52,7 @@ export default function BookingForm() {
                         <label htmlFor="repairType" className="block text-sm font-medium text-white">Tipo de reparo</label>
                         <select
                             id="repairType"
-                            {...register('repairType', { required: 'Tipo de reparo é obrigatório' })}
+                            {...register('repairType')}
                             className="mt-1 block w-full p-2.5 rounded-md bg-gray-700 text-white"
                         >
                             <option value="">Selecione...</option>
@@ -61,7 +67,7 @@ export default function BookingForm() {
                         <input
                             id="location"
                             type="text"
-                            {...register('location', { required: 'Localização é obrigatória' })}
+                            {...register('location')}
                             className="mt-1 block w-full p-2.5 rounded-md bg-gray-700 text-white"
                             placeholder="Sua localização"
                         />
@@ -72,7 +78,7 @@ export default function BookingForm() {
                         <input
                             id="date"
                             type="date"
-                            {...register('date', { required: 'Data é obrigatória' })}
+                            {...register('date')}
                             className="mt-1 block w-full p-2.5 rounded-md bg-gray-700 text-white"
                         />
                         {errors.date && <span className="text-red-500 text-sm">{errors.date.message}</span>}
@@ -82,7 +88,7 @@ export default function BookingForm() {
                         <input
                             id="time"
                             type="time"
-                            {...register('time', { required: 'Horário é obrigatório' })}
+                            {...register('time')}
                             className="mt-1 block w-full p-2.5 rounded-md bg-gray-700 text-white"
                         />
                         {errors.time && <span className="text-red-500 text-sm">{errors.time.message}</span>}
@@ -92,7 +98,7 @@ export default function BookingForm() {
                         <input
                             id="name"
                             type="text"
-                            {...register('name', { required: 'Nome é obrigatório' })}
+                            {...register('name')}
                             className="mt-1 block w-full p-2.5 rounded-md bg-gray-700 text-white"
                             placeholder="Seu nome"
                         />
@@ -103,7 +109,7 @@ export default function BookingForm() {
                         <input
                             id="phone"
                             type="tel"
-                            {...register('phone', { required: 'Telefone é obrigatório' })}
+                            {...register('phone')}
                             className="mt-1 block w-full p-2.5 rounded-md bg-gray-700 text-white"
                             placeholder="Seu telefone"
                         />
@@ -114,7 +120,7 @@ export default function BookingForm() {
                         <input
                             id="email"
                             type="email"
-                            {...register('email', { required: 'Email é obrigatório' })}
+                            {...register('email')}
                             className="mt-1 block w-full p-2.5 rounded-md bg-gray-700 text-white"
                             placeholder="Seu email"
                         />

@@ -1,14 +1,31 @@
-'use client'
+'use client';
+
 import BookingForm from "./BookingForm";
 import StyledButton from "./StyledButton";
 import Image from 'next/image';
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
+import Link from 'next/link';
 
 export default function Services() {
     const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
 
     const toggleQuestion = (index: number) => {
         setActiveQuestion(activeQuestion === index ? null : index);
+    };
+
+    const handleSmoothScroll = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
+        e.preventDefault();
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const headerOffset = document.querySelector('nav')?.clientHeight || 0;
+            const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     };
 
     const questions = [
@@ -35,17 +52,21 @@ export default function Services() {
     ];
 
     return (
-        <section className="py-16 bg-gray-100">
-            <BookingForm />
+        <section id="services" className="py-16 bg-gray-100">
+            <div id="booking-form">
+                <BookingForm />
+            </div>
             <div className="container mx-auto mt-24">
                 <StyledButton text="OUR SERVICES" />
-                <h2 className="text-4xl font-bold mb-10 mt-3 text-center">Nos concertamos sua máquina de Lavar e Secar</h2>
+                <h2 id="services-title" className="text-4xl font-bold mb-10 mt-3 text-center">Nos concertamos sua máquina de Lavar e Secar</h2>
                 <p className="mb-6 text-center">Etiam amet nisl, accumsan ullamcorper amet neque. Cursus neque lacus, ac viverra pharetra hendrerit vitae vel amet. Natoque nam vitae non, a pharetra arcu quisque. Dapibus aliquet leo adipiscing egestas mus turpis tellus integer.</p>
                 <div className="bg-white p-10 rounded-lg shadow-lg flex items-center mb-16">
                     <div className="w-1/2 text-left">
                         <h3 className="text-3xl font-semibold mb-4">Tire change</h3>
                         <p className="mb-6">Etiam amet nisl, accumsan ullamcorper amet neque. Cursus neque lacus, ac viverra pharetra hendrerit vitae vel amet. Natoque nam vitae non, a pharetra arcu quisque. Dapibus aliquet leo adipiscing egestas mus turpis tellus integer.</p>
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Contact us</button>
+                        <Link href="#booking-form">
+                            <button onClick={(e) => handleSmoothScroll(e, 'booking-form')} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Contact us</button>
+                        </Link>
                     </div>
                     <div className="w-1/2">
                         <Image src="/maquina.webp" alt="Tire" className="mx-auto" width={500} height={500} />
@@ -58,7 +79,7 @@ export default function Services() {
                             <h2 className="text-4xl font-bold mb-10 mt-3">Tire replacement <span className="text-blue-500">is important.</span> Check why</h2>
                         </div>
                         <p className="mb-6">Consequat sit sapien semper aliquam maecenas est enim hac habitant porttitor mollis vivamus vel porttitor ad enim eget dictum iaculis sodales nullam lectus iaculis vivamus.</p>
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Services</button>
+                        <button onClick={(e) => handleSmoothScroll(e, 'services-title')} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Services</button>
                     </div>
                     <div className="w-full md:w-1/2 bg-white p-10 rounded-lg shadow-lg">
                         <ol className="list-decimal text-left">
