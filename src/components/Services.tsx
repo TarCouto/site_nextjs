@@ -15,16 +15,20 @@ export default function Services() {
 
     const handleSmoothScroll = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
         e.preventDefault();
+        console.log(`Attempting to scroll to ${targetId}`);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
             const headerOffset = document.querySelector('nav')?.clientHeight || 0;
             const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
             const offsetPosition = elementPosition - headerOffset;
 
+            console.log(`Scrolling to position: ${offsetPosition}`);
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
             });
+        } else {
+            console.error(`Element with ID ${targetId} not found`);
         }
     };
 
@@ -56,9 +60,9 @@ export default function Services() {
             <div id="booking-form">
                 <BookingForm />
             </div>
-            <div className="container mx-auto mt-24">
+            <div className="container mx-auto mt-24" id="services-title" >
                 <StyledButton text="OUR SERVICES" />
-                <h2 id="services-title" className="text-4xl font-bold mb-10 mt-3 text-center">Nos concertamos sua máquina de Lavar e Secar</h2>
+                <h2 className="text-4xl font-bold mb-10 mt-3 text-center">Nos concertamos sua máquina de Lavar e Secar</h2>
                 <p className="mb-6 text-center">Etiam amet nisl, accumsan ullamcorper amet neque. Cursus neque lacus, ac viverra pharetra hendrerit vitae vel amet. Natoque nam vitae non, a pharetra arcu quisque. Dapibus aliquet leo adipiscing egestas mus turpis tellus integer.</p>
                 <div className="bg-white p-10 rounded-lg shadow-lg flex items-center mb-16">
                     <div className="w-1/2 text-left">

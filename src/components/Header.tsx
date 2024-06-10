@@ -31,12 +31,20 @@ export default function Header() {
 
     const handleSmoothScroll = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
         e.preventDefault();
+        console.log(`Attempting to scroll to ${targetId}`);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
+            const headerOffset = document.querySelector('nav')?.clientHeight || 0;
+            const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerOffset;
+
+            console.log(`Scrolling to position: ${offsetPosition}`);
             window.scrollTo({
-                top: targetElement.offsetTop - 100, // Ajuste o valor para garantir que o formulário esteja totalmente visível
+                top: offsetPosition,
                 behavior: 'smooth'
             });
+        } else {
+            console.error(`Element with ID ${targetId} not found`);
         }
         if (isMobileMenuOpen) {
             toggleMobileMenu();
@@ -52,7 +60,7 @@ export default function Header() {
             </div>
             <div className="hidden md:flex space-x-8 mr-6">
                 <Link href="/" className="text-xl hover:text-gray-300">Home</Link>
-                <a href="#services" className="text-xl hover:text-gray-300" onClick={(e) => handleSmoothScroll(e, 'services')}>Serviços</a>
+                <a href="#services-title" className="text-xl hover:text-gray-300" onClick={(e) => handleSmoothScroll(e, 'services-title')}>Serviços</a>
                 <a href="#booking-form" className="text-xl hover:text-gray-300" onClick={(e) => handleSmoothScroll(e, 'booking-form')}>Contato</a>
             </div>
             <div className="md:hidden mr-6">
@@ -63,7 +71,7 @@ export default function Header() {
             {isMobileMenuOpen && (
                 <div className="absolute top-16 left-0 w-full bg-gray-600 text-white flex flex-col items-center space-y-6 py-6 md:hidden">
                     <Link href="/" className="text-xl hover:text-gray-500" onClick={toggleMobileMenu}>Home</Link>
-                    <a href="#services" className="text-xl hover:text-gray-500" onClick={(e) => handleSmoothScroll(e, 'services')}>Serviços</a>
+                    <a href="#services-title" className="text-xl hover:text-gray-500" onClick={(e) => handleSmoothScroll(e, 'services-title')}>Serviços</a>
                     <a href="#booking-form" className="text-xl hover:text-gray-500" onClick={(e) => handleSmoothScroll(e, 'booking-form')}>Contato</a>
                 </div>
             )}
