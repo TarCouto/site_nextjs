@@ -68,7 +68,14 @@ export default function Services() {
                     Trabalhamos dia e noite para proporcionar um serviço de excelente qualidade, mantendo nossa Taxa Zero de reclamações no Reclame Aqui.</p>
                 <div className="bg-white p-10 rounded-lg shadow-lg flex items-center mb-16">
                     <div className="w-1/2 text-left">
-                        <h3 className="text-3xl font-semibold mb-4">Por que escolher nosso serviço?</h3>
+                        <div className="flex items-center bg-white p-2 rounded space-x-4">
+                            <Image src="/logosamsung.png" alt="Logo da Empresa Samsung" width={80} height={30} />
+                            <Image src="/lg_logo.png" alt="Logo da Empresa LG" width={80} height={30} />
+                        </div>
+
+
+
+                        <h3 className="text-3xl font-semibold mb-10">Por que escolher nosso serviço?</h3>
                         <div className="mb-6">
                             <p>
                                 <strong>Expertise e Qualificação:</strong> Técnicos qualificados e treinados nas tecnologias LG e Samsung. Diagnóstico rápido e preciso.
@@ -98,6 +105,7 @@ export default function Services() {
                     </div>
                     <div className="w-1/2">
                         <Image src="/maquina.webp" alt="Tire" className="mx-auto" width={500} height={500} />
+
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-start">
