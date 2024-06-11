@@ -34,24 +34,24 @@ export default function Services() {
 
     const questions = [
         {
-            question: "Why is seasonal tire replacement so important?",
-            answer: "Seasonal tire replacement is important because different tires are designed to perform optimally under different conditions. Using the correct tires for the season improves safety and performance."
+            question: "Código: tE, LE",
+            answer: "Código tE: Este código indica algum problema na secagem.Código LE: Se o ciclo de lavagem for interrompido e código de erro LE for exibido no painel de sua lavadora, é uma indicação que ocorreu uma falha de comunicação entre a placa de controle e o motor ou sobrecarga."
         },
         {
-            question: "When should I replace my tires?",
-            answer: "You should replace your tires when the tread depth is below the minimum recommended level, or if they show signs of damage such as cracks or bulges."
+            question: "Código: AE, dE",
+            answer: "Código AE: Esse código indica um transbordamento interno de água. Entre em contato imediatamente para agendar uma visita técnica.Código dE: Quando o código DE é exibido no painel da lavadora, significa que há um problema relacionado à porta.Em alguns casos específicos, podem aparecer os seguintes códigos adicionais:dE1: Indica que a porta está danificada.dE2: Indica que a porta não foi fechada corretamente."
         },
         {
-            question: "Why should I replace my tires with summer tires?",
-            answer: "Summer tires are designed to provide optimal performance in warm weather conditions. They offer better handling and braking compared to all-season or winter tires during summer."
+            question: "Código: 4E, 3E6",
+            answer: "Sugere-se obter assistência imediata de um técnico qualificado."
         },
         {
-            question: "Why should I change to winter tires?",
-            answer: "Winter tires are made with a rubber compound that remains flexible in cold weather, providing better traction and safety on snow and ice compared to all-season or summer tires."
+            question: "Código: 3E1, 3E",
+            answer: "Sugere-se obter assistência imediata de um técnico qualificado."
         },
         {
-            question: "Donec fermentum ut, sapien?",
-            answer: "Fusce consequat nunc. Nulla nec magna. In laoreet feugiat. Cum sociis natoque penatibus et lectus. Ut wisi nec diam magna in turpis egestas."
+            question: "Código: PE, Cd",
+            answer: "Código PE: Caso ocorra uma falha no sensor do nível da água, o painel da lavadora exibirá o código de erro PE.Código Cd: Durante o processo de secagem, o tambor atinge altas temperaturas.Para garantir a segurança e evitar acidentes ao retirar as roupas, a porta trava automaticamente e o visor exibe o código CD."
         }
     ];
 
@@ -60,16 +60,40 @@ export default function Services() {
             <div id="booking-form">
                 <BookingForm />
             </div>
-            <div className="container mx-auto mt-24" id="services-title" >
-                <StyledButton text="OUR SERVICES" />
-                <h2 className="text-4xl font-bold mb-10 mt-3 text-center">Nos concertamos sua máquina de Lavar e Secar</h2>
-                <p className="mb-6 text-center">Etiam amet nisl, accumsan ullamcorper amet neque. Cursus neque lacus, ac viverra pharetra hendrerit vitae vel amet. Natoque nam vitae non, a pharetra arcu quisque. Dapibus aliquet leo adipiscing egestas mus turpis tellus integer.</p>
+            <div className="container mx-auto mt-24" >
+                <StyledButton text="Nossos Serviços" />
+                <h2 className="text-3xl font-bold mb-10 mt-3 text-center">Conheça a nossa empresa e entenda por que somos a melhor escolha para você</h2>
+                <p className="mb-6 text-center">Somos uma assistência técnica que iniciou suas atividades em 1998, focada no conserto de toda a Linha Branca da LG e outras marcas nacionais. Em meados de 2001, passamos a nos especializar exclusivamente em Lava e Seca, Lavadoras e Secadoras das marcas LG e Samsung, devido à dificuldade que os consumidores enfrentavam para encontrar uma assistência técnica capaz de resolver os problemas com qualidade, agilidade e preço justo.
+
+                    Trabalhamos dia e noite para proporcionar um serviço de excelente qualidade, mantendo nossa Taxa Zero de reclamações no Reclame Aqui.</p>
                 <div className="bg-white p-10 rounded-lg shadow-lg flex items-center mb-16">
                     <div className="w-1/2 text-left">
-                        <h3 className="text-3xl font-semibold mb-4">Tire change</h3>
-                        <p className="mb-6">Etiam amet nisl, accumsan ullamcorper amet neque. Cursus neque lacus, ac viverra pharetra hendrerit vitae vel amet. Natoque nam vitae non, a pharetra arcu quisque. Dapibus aliquet leo adipiscing egestas mus turpis tellus integer.</p>
+                        <h3 className="text-3xl font-semibold mb-4">Por que escolher nosso serviço?</h3>
+                        <div className="mb-6">
+                            <p>
+                                <strong>Expertise e Qualificação:</strong> Técnicos qualificados e treinados nas tecnologias LG e Samsung. Diagnóstico rápido e preciso.
+                            </p>
+                            <p>
+                                <strong>Qualidade e Agilidade:</strong> Garantimos funcionamento perfeito da sua Lava e Seca no menor tempo possível.
+                            </p>
+                            <p>
+                                <strong>Preço Justo:</strong> Serviços de alta qualidade a preços competitivos, sem surpresas.
+                            </p>
+                            <p>
+                                <strong>Taxa Zero de Reclamações:</strong> Compromisso com a satisfação total dos nossos clientes e excelência no atendimento.
+                            </p>
+                            <p>
+                                <strong>Nossos Serviços:</strong>
+                                Manutenção Preventiva, Reparos, Instalação, Suporte Técnico.
+                            </p>
+                            <p>
+                                Escolha nossa assistência técnica e tenha tranquilidade. Entre em contato conosco hoje mesmo!
+                            </p>
+                        </div>
+
+
                         <Link href="#booking-form">
-                            <button onClick={(e) => handleSmoothScroll(e, 'booking-form')} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Contact us</button>
+                            <button onClick={(e) => handleSmoothScroll(e, 'booking-form')} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Contate-nos</button>
                         </Link>
                     </div>
                     <div className="w-1/2">
@@ -80,11 +104,17 @@ export default function Services() {
                     <div className="w-full md:w-1/2 mb-8 md:mb-0">
                         <div className="flex flex-col items-start">
                             <StyledButton text="FAQ" />
-                            <h2 className="text-4xl font-bold mb-10 mt-3">Tire replacement <span className="text-blue-500">is important.</span> Check why</h2>
+                            <h2 className="text-4xl font-bold mb-10 mt-3">Erros mais comuns em <span className="text-blue-500">Lava e Seca</span></h2>
                         </div>
-                        <p className="mb-6">Consequat sit sapien semper aliquam maecenas est enim hac habitant porttitor mollis vivamus vel porttitor ad enim eget dictum iaculis sodales nullam lectus iaculis vivamus.</p>
-                        <button onClick={(e) => handleSmoothScroll(e, 'services-title')} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Services</button>
+                        <p className="mb-6">
+                            Conheça os problemas mais frequentes nas máquinas de lavar e secar da LG e Samsung, e como nossa assistência técnica pode ajudar a resolvê-los.
+                        </p>
+                        <p className="mb-6">
+                            Nossa equipe está preparada para diagnosticar e reparar esses e outros problemas, garantindo que sua Lava e Seca volte a funcionar perfeitamente.
+                        </p>
+                        <button onClick={(e) => handleSmoothScroll(e, 'services-title')} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md">Serviços</button>
                     </div>
+
                     <div className="w-full md:w-1/2 bg-white p-10 rounded-lg shadow-lg">
                         <ol className="list-decimal text-left">
                             {questions.map((item, index) => (
